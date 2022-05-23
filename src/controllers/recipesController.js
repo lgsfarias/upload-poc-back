@@ -23,12 +23,12 @@ export default class Recipes {
     };
 
     static createRecipe = async (req, res) => {
-        const { title, decription, ingredients, preparation } = req.body;
+        const { title, description, ingredients, preparation } = req.body;
         const { filename } = req.file;
         try {
             await db.collection('recipes').insertOne({
                 title,
-                decription,
+                description,
                 ingredients: JSON.parse(ingredients),
                 preparation: JSON.parse(preparation),
                 image: `http://localhost:5000/files/${filename}`,
